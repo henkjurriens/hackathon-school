@@ -439,3 +439,18 @@ a:hover, a:focus {
    color : white;
    background-color : black
 }
+
+.example {
+
+   height: 400px;
+   margin-right : auto;
+   background-color:  white;
+
+}
+
+
+.example h1 {
+    border : 0;
+    text-shadow : none;
+
+}
