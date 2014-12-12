@@ -43,4 +43,4 @@ def convertVrienden():
 ##convertVrienden()
 #	copyFolder("myfriendbook", sys.argv[1] + "/myfriendbook")
 os.chdir(sys.argv[1] + "/myfriendbook")
-subprocess.call(["ionic", "build", "ios"])
+subprocess.call(["ionic", "build"])
