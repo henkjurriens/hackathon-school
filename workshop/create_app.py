@@ -2,6 +2,7 @@ import string
 import shutil, errno
 import sys
 import subprocess
+import os
 
 def copyFolder(src, dst):
     try:
@@ -41,4 +42,5 @@ def convertVrienden():
 
 ##convertVrienden()
 #	copyFolder("myfriendbook", sys.argv[1] + "/myfriendbook")
-subprocess.call(["ls", "-l"])
+os.chdir(sys.argv[1] + "/myfriendbook")
+subprocess.call(["ionic", "build", "ios"])
