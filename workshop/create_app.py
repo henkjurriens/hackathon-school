@@ -13,31 +13,7 @@ def copyFolder(src, dst):
         else: raise
 
 
-
-def convertVrienden():
-	## read file
-	with open("vrienden.html") as f:
-	    content = f.readlines()
-
-
-	## check for links
-	## from  'vrienden/1.html' to  '#/app/vrienden/1'
-	for line in content:         
-		if ".html" in line:
-			index = content.index(line)
-			start = line.index('href')
-			end  = line.index('.html') 
-			vriend = line[end-1:end]
-			line = string.replace(line, line[start:end+6], 'href="#/app/vrienden/' + vriend + '"')
-			content[index] = line
-
-	## write to file
-	fo = open("vrienden.html1", "wb")
-	for line in content:         
-		fo.write(line)
-	fo.close()
-
-def createVrienden(group):
+def createFriends(group):
 
 	template = """<ion-view title="Mijn vrienden">
   	<ion-nav-buttons side="left">
@@ -74,11 +50,37 @@ def createVrienden(group):
 	fo = open("out/" + group + "/myfriendbook/www/templates/vrienden.html", "wb")
 	fo.write(template)
 	fo.close()
+
+def createFriend(group, friend):
+
+	template = """<ion-view title="Vriend">
+  	<ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+ 	</ion-nav-buttons>
+	  	{{ion-content}}
+	</ion-view>"""
+
+	with open(group + "/vrienden/" + friend) as f:
+	    content =  f.readlines()
+
+	content = '\n'.join(content)
+	start = content.index('<ion-content>')
+	end = content.index('</ion-content>')
+	
+	content = content[start + 13:end]
+	content = "<ion-content class=\"has-header\">" + content + "</ion-content>"
+	template = string.replace(template,"{{ion-content}}", content)
+
+	## write to file
+	fo = open("out/" + group + "/myfriendbook/www/templates/vrienden/" + friend, "wb")
+	fo.write(template)
+	fo.close()
+
+
+
+
 	
 
-
-
-##convertVrienden()
 for group in sys.argv:
 
 	index = sys.argv.index(group)
@@ -91,9 +93,22 @@ for group in sys.argv:
 		print "copy ionic folder"
 		copyFolder("myfriendbook", "out/" + group + "/myfriendbook")
 
-		createVrienden(group)
+		print "create vrienden.html"
+		createFriends(group)
+
+		
+
+		for subdir, dirs, files in os.walk("out/" + group + "/vrienden"):
+			print "create friend"
+    		for file in files:
+    			print "create vrienden/" + file
+        		createFriend(group, file)
+
 
 		os.chdir("out/" + group + "/myfriendbook")
+
+
+
 		# subprocess.call(["ionic", "build"])
 		
 
