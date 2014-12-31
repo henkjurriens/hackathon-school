@@ -87,7 +87,12 @@ for group in sys.argv:
 	if index > 0:
 		print "*** " + group + " ***"
 		print "remove old folder"
-		shutil.rmtree("out/" + group )
+
+		try:
+			shutil.rmtree("out/" + group )
+		except:
+			print "folder bestaat niet"	
+
 		print "copy folder"
 		copyFolder(sys.argv[index], "out/" + group )
 		print "copy ionic folder"
@@ -106,9 +111,11 @@ for group in sys.argv:
 
 
 		os.chdir("out/" + group + "/myfriendbook")
+		subprocess.call(["ionic", "build"])
+		os.chdir("..");
+		os.chdir("..");
+		os.chdir("..");
+		subprocess.call(["pwd",])
 
-
-
-		# subprocess.call(["ionic", "build"])
 		
 
