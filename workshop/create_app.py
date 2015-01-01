@@ -106,8 +106,9 @@ for group in sys.argv:
 		for subdir, dirs, files in os.walk("out/" + group + "/vrienden"):
 			print "create friend"
     		for file in files:
-    			print "create vrienden/" + file
-        		createFriend(group, file)
+    			if ".html" in file :
+	    			print "create vrienden/" + file
+	        		createFriend(group, file)
 
 
 		os.chdir("out/" + group + "/myfriendbook")
