@@ -433,17 +433,20 @@ a:hover, a:focus {
 
 .image h1 {
    position: absolute;
-   top: 300px;
+   top: 400px;
    left: 0;
    width: 100%;
    color : white;
+   font-size: 4em;
    background-color : black
 }
 
 .example {
 
    height: 400px;
+   width : 800px;
    margin-right : auto;
+   margin-left:  auto;
    background-color:  white;
 
 }
@@ -453,4 +456,10 @@ a:hover, a:focus {
     border : 0;
     text-shadow : none;
 
+}
+
+pre {
+  width : 800px;
+  margin-right : auto;
+  margin-left:  auto;
 }
