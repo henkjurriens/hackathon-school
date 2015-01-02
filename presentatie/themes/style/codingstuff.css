@@ -453,13 +453,20 @@ a:hover, a:focus {
 
 
 .example h1 {
+
     border : 0;
+    border-top : 50px;
     text-shadow : none;
 
 }
 
 pre {
-  width : 800px;
+  width : 900px;
+  font-size:  24px;
   margin-right : auto;
   margin-left:  auto;
+}
+
+pre h1 {
+  margin-top : 100px;
 }
