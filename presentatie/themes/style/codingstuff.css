@@ -433,7 +433,7 @@ a:hover, a:focus {
 
 .image h1 {
    position: absolute;
-   top: 400px;
+   top: 200px;
    left: 0;
    width: 100%;
    color : white;
@@ -468,5 +468,5 @@ pre {
 }
 
 pre h1 {
-  margin-top : 100px;
+  margin-top :50px;
 }
